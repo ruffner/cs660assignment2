@@ -2,7 +2,7 @@ import numpy as np
 import gym
 
 # set to True to use the 8x8 frozen lake
-bigboy = False
+bigboy = True
 
 # environment parameters
 if bigboy:
@@ -21,7 +21,7 @@ else:
 # choose an action, greedily with prob e
 # when you are in state s from policy q
 def chooseAction(Q, s, e):
-    if np.random.random() < epsilon:
+    if np.random.uniform(0, 1) < e:
         return np.argmax( Q[s, :] )
     else:
         return env.action_space.sample()
